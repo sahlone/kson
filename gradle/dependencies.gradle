@@ -1,0 +1,46 @@
+ext {
+    kotlinVersion = '1.3.20'
+    kotlinTest = '3.4.2'
+    detekt = '1.8.0'
+    arrow = '0.8.2'
+    jackson = '2.10.3'
+    sl4j = '1.7.25'
+    logstashLogbackEncoder = '5.0'
+    logback = '1.2.2'
+    komprehensions = '1.3.2'
+
+    libraries = [
+            'kotlinPlugin'          : "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion",
+            'detekt'                : "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$detekt",
+            'detektKtLintFormat'    : "io.gitlab.arturbosch.detekt:detekt-formatting:$detekt",
+            'kotlinStdlib'          : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion",
+            'kotlinReflect'         : "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion",
+            'kotlinTest'            : "io.kotlintest:kotlintest-runner-junit5:$kotlinTest",
+            'kotlinTestJsonAsserts' : "io.kotlintest:kotlintest-assertions-json:$kotlinTest",
+            'ktlint'                : "org.jlleitschuh.gradle:ktlint-gradle:9.1.1",
+
+            //arrow
+            'arrowCore'             : "io.arrow-kt:arrow-core:$arrow",
+            'arrowData'             : "io.arrow-kt:arrow-data:$arrow",
+            'arrowEffects'          : "io.arrow-kt:arrow-effects:${arrow}",
+            'arrowEffectsMtl'       : "io.arrow-kt:arrow-mtl:${arrow}",
+            'arrowEffectsInstances' : "io.arrow-kt:arrow-effects-instances:${arrow}",
+            'arrowInstancesCore'    : "io.arrow-kt:arrow-instances-core:${arrow}",
+            'arrowInstancesData'    : "io.arrow-kt:arrow-instances-data:${arrow}",
+            'arrowSyntax'           : "io.arrow-kt:arrow-syntax:${arrow}",
+            'arrowTypeclasses'      : "io.arrow-kt:arrow-typeclasses:${arrow}",
+            'komprehensions'        : "com.github.pakoito.Komprehensions:komprehensions:$komprehensions",
+
+
+            // json
+            'jacksonCore'           : "com.fasterxml.jackson.core:jackson-core:$jackson",
+            'jacksonDatabind'       : "com.fasterxml.jackson.core:jackson-databind:$jackson",
+            'jacksonKotlin'         : "com.fasterxml.jackson.module:jackson-module-kotlin:$jackson",
+            'jacksonJsr310'         : "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jackson",
+
+            //logging
+            'sl4j'                  : "org.slf4j:slf4j-api:$sl4j",
+            'logstashLogbackEncoder': "net.logstash.logback:logstash-logback-encoder:$logstashLogbackEncoder",
+            'logbackClassic'        : "ch.qos.logback:logback-classic:$logback",
+    ]
+}

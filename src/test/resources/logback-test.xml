@@ -1,0 +1,6 @@
+<configuration>
+    <include resource="logback-logstash.xml"/>
+    <root level="${log.level:-DEBUG}">
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>

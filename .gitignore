@@ -1,0 +1,13 @@
+!.docker
+!.github/
+.DS_Store
+.idea
+.gradle
+**/.gradle/
+**/.idea/
+**/build/
+**/out/
+**/bin/
+**/RemoteSystemsTempFiles/
+**/bin/
+**/wiremock/

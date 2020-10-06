@@ -1,0 +1,97 @@
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    apply from: 'gradle/dependencies.gradle'
+}
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version "1.3.20"
+    id 'idea'
+    id 'java-library'
+    id "io.gitlab.arturbosch.detekt" version '1.8.0'
+    id "maven-publish"
+}
+
+group = 'com.github.sahlone'
+version = '1.0.1'
+repositories {
+    jcenter {
+        content {
+            includeGroup "org.jetbrains.kotlinx"
+        }
+    }
+    jcenter()
+    mavenCentral()
+    maven { url "https://jitpack.io" }
+}
+
+
+Map<String, String> libraries = rootProject.ext.libraries
+dependencies {
+
+    // Use the Kotlin JDK 8 standard library
+    implementation libraries.kotlinStdlib
+    implementation libraries.kotlinReflect
+
+    // arrow
+    implementation libraries.arrowCore
+    implementation libraries.arrowData
+    implementation libraries.arrowEffects
+    implementation libraries.arrowEffectsMtl
+
+    implementation libraries.arrowEffectsInstances
+    implementation libraries.arrowInstancesCore
+    implementation libraries.arrowInstancesData
+    implementation libraries.arrowSyntax
+    implementation libraries.arrowTypeclasses
+    implementation libraries.komprehensions
+
+    // json
+    implementation libraries.jacksonCore
+    implementation libraries.jacksonDatabind
+    implementation libraries.jacksonKotlin
+    implementation libraries.jacksonJsr310
+
+
+    //logging
+    implementation libraries.sl4j
+    implementation libraries.logstashLogbackEncoder
+    implementation libraries.logbackClassic
+
+    // Use the Kotlin Junit runner which integrates the kotlin test library as well
+    implementation(libraries.kotlinTest) {
+        exclude group: 'io.arrow-kt'
+    }
+    //lint
+    detektPlugins libraries.detektKtLintFormat
+}
+
+configurations.all {
+    exclude module: 'slf4j-log4j12'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+    kotlinOptions {
+        freeCompilerArgs += ["-XXLanguage:+InlineClasses"]
+        allWarningsAsErrors = true
+        jvmTarget = "1.8"
+    }
+}
+
+detekt {
+    failFast = true
+    config = files("$projectDir/config/detekt/detekt.yml")
+    reports {
+        html.enabled = true
+        xml.enabled = true
+    }
+}
+tasks.detekt.jvmTarget = "1.8"

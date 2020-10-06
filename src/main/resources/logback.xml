@@ -1,0 +1,5 @@
+<configuration>
+    <root level="${log.level:-DEBUG}">
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>
