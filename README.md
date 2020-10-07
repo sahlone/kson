@@ -130,8 +130,9 @@ So using the  above functions we can serialize the `AllMenu` object like so
 val json = allMenuJsonWrites(allMenu)
 val result:String = Json.stringify(json).unsafeFix()
 ```
-Note the `unsafeFix` is added to directly get the string value back without checking the types safely if it as a `JsonSuccess`  or a `JsonError`.
-All note  the different syntaxes of writing the  serializers.
+Note the `unsafeFix` is used to directly get the string value back without checking the types safely if it is a `JsonSuccess`  or a `JsonError`.
+Also note  the different syntaxes of writing the  serializers.
+
 For deserializing the above data classes from json string follows the same approach
 ```
 val readsMenuItem: JsonReads<MenuItem> = {
@@ -169,7 +170,8 @@ val allMenuReads: JsonReads<AllMenu> = { json ->
     }
 }
 ```
-Using the above reads function we can do as follows to get the data class
+Using the above `JsonReads` function we can do as follows to deserialize the data class
+
 Input json
 ```
 {
