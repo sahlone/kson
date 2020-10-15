@@ -1,5 +1,5 @@
 # kson
-Functional Json Library based on #Arrow-kt  #Jackson  and Inspired by #Play-framework Json packages 
+Functional Json Library based on [Arrow-kt](https://arrow-kt.io/)  [Jackson](https://github.com/FasterXML/jackson)  and Inspired by [Play-framework Json packages](https://www.playframework.com/documentation/2.8.x/ScalaJson) 
 
 [![](https://jitpack.io/v/sahlone/kson.svg?label=Release)](https://jitpack.io/#sahlone/kson)
 
