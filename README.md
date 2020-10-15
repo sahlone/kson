@@ -192,7 +192,7 @@ Input json
 ```
 Running the below instructions on above input
 ```
-val result = Json.parse(inputJson)
+val result = Json.parse(inputJson).map(allMenuReads)
 when (result) {
     is JsonError -> "Json parsing failed"
     is JsonSuccess -> result.value
