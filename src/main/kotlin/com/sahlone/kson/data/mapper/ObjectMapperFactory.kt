@@ -23,7 +23,7 @@ object ObjectMapperFactory {
                 configure(DeserializationFeature.USE_BIG_DECIMAL_FOR_FLOATS, true)
                 configure(DeserializationFeature.USE_BIG_INTEGER_FOR_INTS, true)
                 configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false)
-                configure(WRITE_DATES_AS_TIMESTAMPS, true)
+                configure(WRITE_DATES_AS_TIMESTAMPS, false)
             }
             .setSerializationInclusion(JsonInclude.Include.NON_NULL)
             .setSerializationInclusion(JsonInclude.Include.NON_ABSENT)
